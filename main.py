@@ -138,12 +138,6 @@ def target_size():
     # ffmpeg call
     run_ffmpeg(input_path, video_bitrate, audio_bitrate, output_file_name)
 
-    def test(x):
-        return x
-
-    def test_res():
-        assert test(1) == 1
-        
 
 if __name__ == "__main__":
     main()
