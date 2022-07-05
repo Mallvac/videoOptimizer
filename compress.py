@@ -5,7 +5,7 @@ max_audio_bitrate = 256000
 min_audio_bitrate = 96000
 
 
-def main():
+def main(t_ch=""):
     # fuck you, whole message in one print
     print("#######################\n#                     #\n#   Video Optimizer   #\n#                     #"
           "\n#######################\n\n1. Optimize\n2. Target Size\n3. Target Bitrate\n4. Exit")
@@ -13,7 +13,8 @@ def main():
         1: optimize_video,
         2: target_size,
         3: "do later",
-        4: exit
+        4: exit,
+        5: test
     }
 
     # check if user stupid
@@ -21,6 +22,8 @@ def main():
         ch = input()
         try:
             ch_: int = int(ch)
+            if t_ch != "":
+                ch_ = t_ch
             func = func_list.get(ch_, "Invalid entry")
         except ValueError:
             print(f'[Err] "{ch}" is not defined, please try again')
@@ -28,6 +31,10 @@ def main():
             break
     # if user not stupid do code :D
     func()
+
+
+def test():
+    return "test_complete"
 
 
 def run_ffmpeg(input_path, video_bitrate, audio_bitrate, output_file_name):
